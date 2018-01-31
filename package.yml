@@ -1,0 +1,33 @@
+name       : python-m2r
+version    : 0.1.12
+release    : 1
+source     :
+    - https://github.com/miyakogi/m2r/archive/v0.1.12.tar.gz : 585b5b4e30494858de49ad844cafeb752bd12764fd6c20ca8496ddd4be5e8d21
+license    : MIT
+component  : programming.python
+summary    : Markdown to reStructuredText converter
+description: |
+    M2R converts a markdown file including reStructuredText (rst) markups to a valid rst format.
+builddeps  :
+    - pygments
+    - python-docutils
+    - python-mistune
+    - python-mock
+    - python-setuptools
+rundeps    :
+    - python-docutils
+    - python-mistune
+build      : |
+    %python_setup
+    %python3_setup
+install    : |
+    %python_install
+    %python3_install
+check      : |
+    pushd $PKG_BUILD_DIR/py2build
+        python setup.py test
+    popd
+
+    pushd $PKG_BUILD_DIR/py3build
+        python3 setup.py test
+    popd
