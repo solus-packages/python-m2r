@@ -1,8 +1,9 @@
 name       : python-m2r
 version    : 0.2.1
-release    : 3
+release    : 4
 source     :
     - https://github.com/miyakogi/m2r/archive/v0.2.1.tar.gz : 9286c1a5d7548f34b0a12017444e4c441781bef4b71f321f723e314b76b6c498
+homepage   : https://github.com/miyakogi/m2r
 license    : MIT
 component  : programming.python
 summary    : Markdown to reStructuredText converter
@@ -13,21 +14,12 @@ builddeps  :
     - python-docutils
     - python-mistune
     - python-mock
-    - python-setuptools
 rundeps    :
     - python-docutils
     - python-mistune
 build      : |
-    %python_setup
     %python3_setup
 install    : |
-    %python_install
     %python3_install
 check      : |
-    pushd $PKG_BUILD_DIR/py2build
-        python setup.py test
-    popd
-
-    pushd $PKG_BUILD_DIR/py3build
-        python3 setup.py test
-    popd
+    %python3_test
